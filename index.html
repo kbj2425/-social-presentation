@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>송파구 삼수(三水) 로고 발표자료</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            scroll-snap-align: start;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        /* 슬라이드 1: 타이틀 */
+        .title-slide {
+            background: linear-gradient(135deg, #1e88e5, #26c6da, #66bb6a);
+            color: white;
+        }
+        
+        .title-slide .slide-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+        
+        .title-slide h1 {
+            font-size: 4em;
+            margin: 0 0 30px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .title-slide p {
+            font-size: 1.8em;
+            opacity: 0.9;
+            margin: 20px 0;
+        }
+        
+        .logo-preview {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 40px auto;
+        }
+        
+        .water-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: flow 4s ease-in-out infinite;
+        }
+        
+        .hangang {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #1976d2, #42a5f5);
+            top: 10px;
+            left: 40px;
+            animation-delay: 0s;
+        }
+        
+        .tancheon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #388e3c, #66bb6a);
+            top: 80px;
+            left: 15px;
+            animation-delay: 1.3s;
+        }
+        
+        .seokchon {
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(45deg, #e91e63, #f8bbd9);
+            top: 80px;
+            right: 15px;
+            animation-delay: 2.6s;
+        }
+        
+        .center-circle {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ffd54f, #ffca28);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(255, 213, 79, 0.4);
+        }
+        
+        /* 슬라이드 2: 문제 정의 */
+        .slide h2 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 20px;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .problem-item {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 6px solid #e74c3c;
+        }
+        
+        .problem-item h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .problem-item p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* 슬라이드 3: 송파구 분석 */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .analysis-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #3498db;
+        }
+        
+        .analysis-item .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .analysis-item h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .analysis-item p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        /* 슬라이드 4: 컨셉트 */
+        .concept-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin: 40px 0;
+        }
+        
+        .water-element {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .water-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hangang-icon { background: linear-gradient(45deg, #1976d2, #42a5f5); }
+        .tancheon-icon { background: linear-gradient(45deg, #388e3c, #66bb6a); }
+        .seokchon-icon { background: linear-gradient(45deg, #e91e63, #f8bbd9); }
+        
+        .plus-sign {
+            font-size: 3em;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .equals-sign {
+            font-size: 3em;
+            color: #e67e22;
+            font-weight: bold;
+        }
+        
+        .result {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .result-icon {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        /* 슬라이드 5: 로고 디자인 */
+        .logo-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .logo-version {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .logo-display {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            margin: 20px auto;
+        }
+        
+        .horizontal-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .horizontal-symbol {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin-right: 20px;
+        }
+        
+        .horizontal-text {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        /* 슬라이드 6: 적용 사례 */
+        .applications {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .app-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid #3498db;
+        }
+        
+        .app-item .app-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .app-item h4 {
+            color: #2c3e50;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        
+        .app-item p {
+            color: #666;
+            font-size: 0.9em;
+            margin: 0;
+        }
+        
+        /* 슬라이드 7: 기대효과 */
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .effect-item {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #27ae60;
+        }
+        
+        .effect-item h3 {
+            color: #27ae60;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .effect-item ul {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        /* 슬라이드 8: 마무리 */
+        .conclusion-slide {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .conclusion-slide .slide-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+        
+        .conclusion-slide h2 {
+            color: white;
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .final-message {
+            font-size: 1.5em;
+            line-height: 1.6;
+            margin: 40px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 네비게이션 */
+        .nav-container {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-dots {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #bdc3c7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background: #3498db;
+            transform: scale(1.2);
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+        }
+        
+        @keyframes flow {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            50% { transform: scale(1.05) rotate(180deg); opacity: 0.9; }
+        }
+        
+        @media (max-width: 768px) {
+            .slide-container {
+                padding: 40px 20px;
+            }
+            
+            .problem-grid,
+            .analysis-grid,
+            .logo-showcase,
+            .effects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .concept-visual {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .applications {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 슬라이드 1: 타이틀 -->
+    <div class="slide title-slide">
+        <div class="slide-container">
+            <h1>🌊 송파구 삼수(三水) 로고</h1>
+            <p>한강 · 탄천 · 석촌호수가 만나는 물의 도시</p>
+            
+            <div class="logo-preview">
+                <div class="water-circle hangang"></div>
+                <div class="water-circle tancheon"></div>
+                <div class="water-circle seokchon"></div>
+                <div class="center-circle"></div>
+            </div>
+            
+            <p style="font-size: 1.2em; margin-top: 40px;">송파구 브랜드 아이덴티티 제안</p>
+        </div>
+        <div class="slide-number">1 / 8</div>
+    </div>
+
+    <!-- 슬라이드 2: 문제 정의 -->
+    <div class="slide">
+        <div class="slide-container">
+            <h2>🎯 Why? 로고가 필요한 이유</h2>
+            
+            <div class="problem-grid">
+                <div class="problem-item">
+                    <h3>📊 서울 최대 자치구의 위상</h3>
+                    <p>인구 65만4천명, 16년째 서울시 1위<br>
+                    규모에 걸맞은 강력한 브랜드 정체성 필요</p>
+                </div>
+                
+                <div class="problem-item">
+                    <h3>🏛️ 독특한 역사적 배경</h3>
+                    <p>2000년 백제 위례성 + 88올림픽 + 현대 메가시티<br>
+                    차별화된 정체성을 표현할 시각적 상징 부재</p>
+                </div>
+                
+                <div class="problem-item">
+                    <h3>🌍 강남3구 내 차별화</h3>
+                    <p>강남구, 서초구와 구별되는<br>
+                    송파구만의 고유한 매력 어필 필요</p>
+                </div>
+                
+                <div class="problem-item">
+                    <h3>💡 브랜드 통합 관리</h3>
+                    <p>다양한 매체와 상황에서 일관된 이미지로<br>
+                    송파구를 대표할 통합 브랜드 시스템 필요</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">2 / 8</div>
+    </div>
+
+    <!-- 슬라이드 3: 송파구 분석 -->
+    <div class="slide">
+        <div class="slide-container">
+            <h2>🔍 송파구 핵심 자산 분석</h2>
+            
+            <div class="analysis-grid">
+                <div class="analysis-item">
+                    <span class="icon">🌊</span>
+                    <h4>한강</h4>
+                    <p>송파구 북쪽 경계<br>서울의 젖줄<br>웅장함과 역사성</p>
+                </div>
+                
+                <div class="analysis-item">
+                    <span class="icon">🌿</span>
+                    <h4>탄천</h4>
+                    <p>동서를 관통하는 하천<br>생태 통로 역할<br>자연 친화적 환경</p>
+                </div>
+                
+                <div class="analysis-item">
+                    <span class="icon">🌸</span>
+                    <h4>석촌호수</h4>
+                    <p>도심 속 호수공원<br>벚꽃 명소<br>시민 휴식 공간</p>
+                </div>
+                
+                <div class="analysis-item">
+                    <span class="icon">👥</span>
+                    <h4>인구 1위</h4>
+                    <p>66만 명 거주<br>젊은 도시<br>역동적 에너지</p>
+                </div>
+                
+                <div class="analysis-item">
+                    <span class="icon">🏛️</span>
+                    <h4>역사성</h4>
+                    <p>백제 위례성<br>풍납토성·몽촌토성<br>2000년 역사도시</p>
+                </div>
+                
+                <div class="analysis-item">
+                    <span class="icon">🏙️</span>
+                    <h4>현대성</h4>
+                    <p>롯데월드타워<br>88올림픽 레거시<br>미래 지향적 도시</p>
+                </div>
+            </div>
+            
+            <div style="background: #e8f4fd; padding: 30px; border-radius: 15px; margin-top: 40px;">
+                <h3 style="color: #2980b9; text-align: center; margin-bottom: 15px;">💧 핵심 발견</h3>
+                <p style="text-align: center; color: #34495e; font-size: 1.2em; margin: 0;">
+                    <strong>송파구는 '세 개의 물줄기'로 둘러싸인 독특한 수변도시!</strong>
+                </p>
+            </div>
+        </div>
+        <div class="slide-number">3 / 8</div>
+    </div>
+
+    <!-- 슬라이드 4: 컨셉트 도출 -->
+    <div class="slide">
+        <div class="slide-container">
+            <h2>💡 컨셉트: 삼수(三水)의 조화</h2>
+            
+            <div class="concept-visual">
+                <div class="water-element">
+                    <div class="water-icon hangang-icon">한강</div>
+                    <h4>웅장함</h4>
+                    <p>서울의 중심 하천<br>역사와 문화</p>
+                </div>
+                
+                <div class="plus-sign">+</div>
+                
+                <div class="water-element">
+                    <div class="water-icon tancheon-icon">탄천</div>
+                    <h4>생명력</h4>
+                    <p>생태 통로<br>자연 친화</p>
+                </div>
+                
+                <div class="plus-sign">+</div>
+                
+                <div class="water-element">
+                    <div class="water-icon seokchon-icon">석촌호수</div>
+                    <h4>아름다움</h4>
+                    <p>도심 속 오아시스<br>시민 휴식</p>
+                </div>
+                
+                <div class="equals-sign">=</div>
+                
+                <div class="result">
+                    <div class="result-icon">
+                        <div class="water-circle hangang" style="width: 80px; height: 80px; top: 5px; left: 35px;"></div>
+                        <div class="water-circle tancheon" style="width: 70px; height: 70px; top: 55px; left: 15px;"></div>
+                        <div class="water-circle seokchon" style="width: 75px; height: 75px; top: 55px; right: 15px;"></div>
+                        <div class="center-circle" style="width: 40px; height: 40px;"></div>
+                    </div>
+                    <h4>송파구</h4>
+                    <p>조화와 융합<br>물의 도시</p>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #e3f2fd, #f3e5f5); padding: 30px; border-radius: 15px; margin-top: 40px;">
+                <h3 style="color: #1976d2; text-align: center; margin-bottom: 20px;">🎯 디자인 철학</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div style="text-align: center;">
+                        <h4 style="color: #2c3e50;">🔄 융합</h4>
+                        <p style="color: #666; margin: 0;">세 물줄기가 만나는<br>화합의 공간</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <h4 style="color: #2c3e50;">🌊 흐름</h4>
+                        <p style="color: #666; margin: 0;">끊임없는 발전과<br>역동적 변화</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <h4 style="color: #2c3e50;">💎 조화</h4>
+                        <p style="color: #666; margin: 0;">각기 다른 특성의<br>아름다운 균형</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">4 / 8</div>
+    </div>
+
+    <!-- 슬라이드 5: 로고 디자인 -->
+    <div class="slide">
+        <div class="slide-container">
+            <h2>🎨 로고 디자인 시스템</h2>
+            
+            <div class="logo-showcase">
+                <div class="logo-version">
+                    <h3>심볼형 로고</h3>
+                    <div class="logo-display">
+                        <div class="water-circle hangang" style="width: 90px; height: 90px; top: 5px; left: 45px;"></div>
+                        <div class="water-circle tancheon" style="width: 75px; height: 75px; top: 65px; left: 20px;"></div>
+                        <div class="water-circle seokchon" style="width: 80px; height: 80px; top: 65px; right: 20px;"></div>
+                        <div class="center-circle" style="width: 45px; height: 45px;"></div>
+                    </div>
+                    <p><strong>주 용도:</strong> 공식 문서, 현수막<br>웹사이트 헤더, 기념품</p>
+                </div>
+                
+                <div class="logo-version">
+                    <h3>가로형 조합</h3>
+                    <div style="margin: 20px 0;">
+                        <div class="horizontal-display">
+                            <div class="horizontal-symbol">
+                                <div class="water-circle hangang" style="width: 50px; height: 50px; top: 5px; left: 15px; animation: none;"></div>
+                                <div class="water-circle tancheon" style="width: 40px; height: 40px; top: 35px; left: 5px; animation: none;"></div>
+                                <div class="water-circle seokchon" style="width: 45px; height: 45px; top: 35px; right: 5px; animation: none;"></div>
+                                <div class="center-circle" style="width: 25px; height: 25px;"></div>
+                            </div>
+                            <div class="horizontal-text">송파구</div>
+                        </div>
+                    </div>
+                    <p><strong>주 용도:</strong> 명함, 레터헤드<br>간판, 차량 스티커</p>
+                </div>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin-top: 40px;">
+                <h3 style="color: #2c3e50; text-align: center; margin-bottom: 20px;">🎨 컬러 시스템</h3>
+                <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #1976d2, #42a5f5); border-radius: 50%; margin: 0 auto 10px; box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);"></div>
+                        <h5 style="margin: 5px 0; color: #1976d2;">한강 블루</h5>
+                        <p style="margin: 0; font-size: 0.8em; color: #666;">#1976d2</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #388e3c, #66bb6a); border-radius: 50%; margin: 0 auto 10px; box-shadow: 0 4px 15px rgba(56, 142, 60, 0.3);"></div>
+                        <h5 style="margin: 5px 0; color: #388e3c;">탄천 그린</h5>
+                        <p style="margin: 0; font-size: 0.8em; color: #666;">#388e3c</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #e91e63, #f8bbd9); border-radius: 50%; margin: 0 auto 10px; box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);"></div>
+                        <h5 style="margin: 5px 0; color: #e91e63;">석촌 핑크</h5>
+                        <p style="margin: 0; font-size: 0.8em; color: #666;">#e91e63</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #ffd54f, #ffca28); border-radius: 50%; margin: 0 auto 10px; box-shadow: 0 4px 15px rgba(255, 213, 79, 0.3);"></div>
+                        <h5 style="margin: 5px 0; color: #f57f17;">융합 골드</h5>
+                        <p style="margin: 0; font-size: 0.8em; color: #666;">#ffd54f</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">5 / 8</div>
+    </div>
+
+    <!-- 슬라이드 6: 적용 사례 -->
+    <div class="slide">
+        <div class="slide-container">
+            <h2>📱 로고 적용 사례</h2>
+            
+            <div class="applications">
+                <div class="app-item">
+                    <span class="app-icon">📄</span>
+                    <h4>공식 문서</h4>
+                    <p>공문, 보고서<br>프레젠테이션</p>
+                </div>
+                
+                <div class="app-item">
